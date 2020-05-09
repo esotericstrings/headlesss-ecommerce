@@ -11,7 +11,6 @@ import {
   GridRight,
 } from '~/utils/styles'
 import {
-  ProductTitle,
   ProductDescription
 } from './styles'
 

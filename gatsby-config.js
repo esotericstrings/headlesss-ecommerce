@@ -9,6 +9,234 @@ module.exports = {
     title: `Gatsby Shopify Starter`,
     description: `Kick off your next, ecommerce experience with this Gatsby starter. This starter ships with credentials to a shopify demo store so you can try it out immediately.`,
     author: `@alexanderhorl`,
+    gatsbyStorefrontConfig: {
+      storeName: "Gatsby Storefront",
+      storeDescription: "Demo store description",
+      email: "info@gatsbystorefront.com",
+      company: "Gatsby Storefront Inc.",
+      location: "New York, NY",
+      address: "1 Centre St.",
+      phone: "+1 (800) 123-1234",
+      workingDays: "Mon - Fri",
+      workingHours: "8AM - 6PM",
+      socialNetworks: [
+        {
+          name: "Facebook",
+          link: "https://facebook.com/shopify",
+        },
+        {
+          name: "Twitter",
+          link: "https://twitter.com/shopify",
+        }, 
+        {
+          name: "Pinterest",
+          link: "https://pinterest.com/shopify",
+        },  
+        {
+          name: "Instagram",
+          link: "http://instagram.com/shopify",
+        },      
+      ],
+      payments: ["visa", "mastercard", "amex", "discover", "shopify", "paypal"],
+      // For available socia share buttons see: https://github.com/nygardk/react-share
+      shareButtons: [
+        "Facebook",
+        "Pinterest",
+        "Twitter",
+        "Tumblr",
+        "Whatsapp",
+        "Line",
+        "Viber",
+      ],
+      googleAnalyticsId: "UA-141525658-3",
+      shopifyLite: false,
+      //
+      // carousel, collection, product
+      //
+      mainPage: [
+        {
+          type: "carousel",
+          children: [
+            {
+              name: "Jewelery",
+              type: "collection",
+              handle: "jewelery",
+              textColor: "black",
+              textBgColor: "white",
+            },
+            {
+              name: "Apparel",
+              type: "collection",
+              handle: "apparel",
+              textColor: "white",
+              textBgColor: "primary",
+            },
+            {
+              name: "Silk Summer Top",
+              type: "product",
+              handle: "silk-summer-top",
+              textColor: "white",
+              textBgColor: "primary",
+            },
+          ],
+        },
+        {
+          name: "Apparel",
+          type: "collection",
+          handle: "apparel",
+          textColor: "white",
+          textBgColor: "primary",
+        },
+        {
+          name: "Garden",
+          type: "collection",
+          handle: "garden",
+          textColor: "white",
+          textBgColor: "primary",
+        },
+        {
+          name: "Test",
+          type: "collection",
+          handle: "test-collection",
+          textColor: "black",
+          textBgColor: "white",
+        },
+        {
+          name: "One product",
+          type: "product",
+          handle: "red-sports-tee",
+          textColor: "black",
+          textBgColor: "white",
+        },
+        {
+          name: "Anchor Bracelet Mens",
+          type: "product",
+          handle: "leather-anchor",
+          textColor: "black",
+          textBgColor: "white",
+        },
+        {
+          name: "Yellow Sofa",
+          type: "product",
+          handle: "yellow-sofa",
+          textColor: "black",
+          textBgColor: "white",
+        },
+        {
+          name: "7 Shakra Bracelet",
+          type: "product",
+          handle: "chain-bracelet",
+          textColor: "black",
+          textBgColor: "white",
+        },
+        {
+          name: "White Cotton Shirt",
+          type: "product",
+          handle: "white-cotton-shirt",
+          textColor: "white",
+          textBgColor: "primary",
+        },
+      ],
+      // Menu types: "header", "collection", "product", "link"
+      menu: {
+        name: "Menu",
+        type: "top",
+        children: [
+          {
+            name: "Home",
+            type: "header",
+            handle: "/",
+            link: "/",
+          },
+          {
+            name: "Products",
+            type: "header",
+            handle: "products",
+            link: "/collections/products",
+          },
+          {
+            name: "About us",
+            type: "header",
+            handle: "about-us",
+            link: "/pages/about-us",
+          },
+          {
+            name: "Articles",
+            type: "header",
+            handle: "articles",
+            link: "/blogs/news",
+          },
+          {
+            name: "FAQ",
+            type: "header",
+            handle: "faq",
+            link: "/pages/faq",
+          },
+          {
+            name: "Theme Info",
+            type: "header",
+            children: [
+              {
+                name: "Features",
+                type: "header",
+                handle: "features",
+                link: "/pages/features"
+              },
+              {
+                name: "Style Guide",
+                type: "header",
+                handle: "style-guide",
+                link: "/pages/style-guide"
+              },
+            ],
+          },
+        ],
+      },
+      submenu: {
+        name: "Submenu",
+        type: "top",
+        children: [
+          {
+            name: "Contact us",
+            link: "/pages/contact-us",
+          },
+          {
+            name: "Terms of Service",
+            link: "/policies/terms-of-service",
+          },
+          {
+            name: "Privacy",
+            link: "/policies/privacy-policy",
+          },
+          {
+            name: "Refund Policy",
+            link: "/policies/refund-policy",
+          },
+        ],
+      },
+      footerLinks: [
+        {
+          name: "Contact us",
+          link: "/pages/contact-us",
+        },
+        {
+          name: "Terms of Service",
+          link: "/policies/terms-of-service",
+        },
+        {
+          name: "Privacy",
+          link: "/policies/privacy-policy",
+        },
+        {
+          name: "Refund Policy",
+          link: "/policies/refund-policy",
+        },
+      ],
+      locales: "en-US",
+      currency: "USD",
+      productsPerCollectionPage: "9",
+      articlesPerBlogPage: "6",
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -56,6 +284,29 @@ module.exports = {
         // much time was required to fetch and process the data.
         // Defaults to true.
         verbose: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        /*
+         * The base URL of the WordPress site without the trailingslash and the protocol. This is required.
+         * Example : 'dev-gatbsyjswp.pantheonsite.io' or 'www.example-site.com'
+         */
+        baseUrl: `dev-headless-content.pantheonsite.io`,
+        protocol: `https`,
+        hostingWPCOM: false,
+        useACF: true,
+        includedRoutes: [
+          '/*/*/categories',
+          '/*/*/posts',
+          '/*/*/pages',
+          '/*/*/media',
+          '/*/*/tags',
+          '/*/*/taxonomies',
+          '/*/*/users',
+         '/*/*/menus'
+        ],
       },
     },
     {
