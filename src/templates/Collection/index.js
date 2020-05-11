@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SEO from '~/components/seo'
-import ProductGrid from '~/components/ProductGrid'
+import ProductFeed from '~/components/ProductFeed'
 
 const Collection = props => {
   const {
@@ -15,7 +15,7 @@ const Collection = props => {
         <header className="section-header text-center">
             <h1 className="section-header__title h2">{node.title}</h1>
         </header>
-        <ProductGrid />
+        <ProductFeed products={node.products}/>
     </header>
 
     </>
