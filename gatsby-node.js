@@ -29,10 +29,36 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
       allShopifyCollection {
-        edges {
-          node {
+        nodes {
+          handle
+          title
+          products {
             handle
+            id
+            availableForSale
             title
+            vendor
+            variants {
+              price
+              compareAtPrice
+            }
+            images {
+              id
+              originalSrc
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 910) {
+                    aspectRatio
+                    sizes
+                    src
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                    tracedSVG
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -75,7 +101,7 @@ exports.createPages = ({ graphql, actions }) => {
     console.log(node.handle);
   }),
 
-  result.data.allShopifyCollection.edges.forEach(({ node }) => {
+  result.data.allShopifyCollection.nodes.forEach(( node ) => {
     createPage({
       path: `/collections/${node.handle}/`,
       component: path.resolve(`./src/templates/Collection/index.js`),
