@@ -13,7 +13,7 @@ const getViewBox = name => {
       return "0 0 20 20";
     case "search":
       return "0 0 21.4 21.4";
-    case "search":
+    case "arrow-down":
       return "0 0 20 20";
     default:
       return "0 0 20 20";
