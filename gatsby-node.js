@@ -11,8 +11,41 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allShopifyPage {
+        edges {
+          node {
+            handle
+            title
+            body
+          }
+        }
+      }
+      allShopifyShopPolicy {
+        edges {
+          node {
+            title
+            body
+          }
+        }
+      }
+      allShopifyCollection {
+        edges {
+          node {
+            handle
+            title
+          }
+        }
+      }
+      allShopifyBlog {
+        edges {
+          node {
+            title
+          }
+        }
+      }
     }
   `).then(result => {
+
     result.data.allShopifyProduct.edges.forEach(({ node }) => {
       createPage({
         path: `/product/${node.handle}/`,
@@ -21,8 +54,72 @@ exports.createPages = ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           handle: node.handle,
+          node
         },
       })
+    }),
+  
+
+  result.data.allShopifyPage.edges.forEach(({ node }) => {
+    createPage({
+      path: `/pages/${node.handle}/`,
+      component: path.resolve(`./src/templates/Page/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: node.handle,
+        node
+      },
     })
+    console.log('/pages/');
+    console.log(node.handle);
+  }),
+
+  result.data.allShopifyCollection.edges.forEach(({ node }) => {
+    createPage({
+      path: `/collections/${node.handle}/`,
+      component: path.resolve(`./src/templates/Collection/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: node.handle,
+        node
+      },
+    })
+    console.log('/collections/');
+    console.log(node.handle);
   })
-}
+
+  result.data.allShopifyShopPolicy.edges.forEach(({ node }) => {
+    handle = node.title.replace(/\s+/g, '-').toLowerCase();
+    createPage({
+      path: `/policies/${handle}/`,
+      component: path.resolve(`./src/templates/Policy/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: handle,
+        node
+      },
+    })
+    console.log('/policies/');
+    console.log(handle);
+  })
+
+  result.data.allShopifyBlog.edges.forEach(({ node }) => {
+    handle = node.title.replace(/\s+/g, '-').toLowerCase();
+    createPage({
+      path: `/blog/${handle}/`,
+      component: path.resolve(`./src/templates/Blog/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: handle,
+        node
+      },
+    })
+    console.log('/blog/');
+    console.log(handle);
+  })
+  
+})}
