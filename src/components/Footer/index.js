@@ -38,14 +38,14 @@ const Footer = ({ siteTitle }) => (
       query={FOOTER_QUERY}
       render={data => {
         return (
-        <footer class="site-footer" role="contentinfo" data-section-type="footer" data-section-id="footer" data-footer-parallax="">
-        <div class="page-width">
-            <div class="flex-footer flex-footer--full text-center">
-                <div class="flex-footer__item flex-footer__item--menu">
-                    <ul class="site-footer__linklist">
+        <footer className="site-footer" role="contentinfo" data-section-type="footer" data-section-id="footer" data-footer-parallax="">
+        <div className="page-width">
+            <div className="flex-footer flex-footer--full text-center">
+                <div className="flex-footer__item flex-footer__item--menu">
+                    <ul className="site-footer__linklist">
                     {data.footerLinks.items.map(footerLinks => {
                         return (
-                            <li class="site-footer__linklist-item h6">
+                            <li className="site-footer__linklist-item h6">
                                 <Link to={footerLinks.url}>{footerLinks.title}</Link>
                             </li>
                         )
@@ -54,16 +54,16 @@ const Footer = ({ siteTitle }) => (
                 </div>
             </div>
 
-            <div class="site-footer__bottom">
-                <div class="site-footer__social-icons flex-footer__item--one-third">
-                  <div class="social-links">
-                    <ul class="list--inline">
+            <div className="site-footer__bottom">
+                <div className="site-footer__social-icons flex-footer__item--one-third">
+                  <div className="social-links">
+                    <ul className="list--inline">
                     {data.socialNetworks.items.map(socialNetworks => {
                         return (
-                            <li class="social-links__icon">
-                                <a target="_blank" rel="noopener noreferrer" href={socialNetworks.url} title={data.site.siteMetadata.title + " on " +socialNetworks.title} tabindex="-1">
+                            <li className="social-links__icon">
+                                <a target="_blank" rel="noopener noreferrer" href={socialNetworks.url} title={data.site.siteMetadata.title + " on " +socialNetworks.title} tabIndex="-1">
                                     <SVGIcon name={socialNetworks.title.toLowerCase()}/>
-                                    <span class="icon__fallback-text">{socialNetworks.title}</span>
+                                    <span className="icon__fallback-text">{socialNetworks.title}</span>
                                 </a>
                             </li>
                         )
@@ -72,15 +72,15 @@ const Footer = ({ siteTitle }) => (
                   </div>
                 </div>
 
-                <div class="site-footer__copyright flex-footer__item--one-third">
+                <div className="site-footer__copyright flex-footer__item--one-third">
                     <small>Copyright © {new Date().getFullYear()}, {` `}<Link to="/" title="">{data.site.siteMetadata.title}</Link>.{` `}</small>
-                    <small class="site-footer__powered-by"><a target="_blank" rel="noopener noreferrer" href="https://www.gatsbyjs.org">Built with Gatsby</a></small>
+                    <small className="site-footer__powered-by"><a target="_blank" rel="noopener noreferrer" href="https://www.gatsbyjs.org">Built with Gatsby</a></small>
                 </div>
 
-                <div class="site-footer__payment-icons flex-footer__item--one-third"></div>
+                <div className="site-footer__payment-icons flex-footer__item--one-third"></div>
             </div>
         </div>
-        <div class="site-footer__drawer-cover"></div>
+        <div className="site-footer__drawer-cover"></div>
       </footer>
       )
     }}

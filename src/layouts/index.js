@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
             <Navigation/>
             <main className="content-for-layout" id="MainContent" role="main" style={{marginBottom: "215.4px"}}>
               <div id="shopify-section-collection-template" className="shopify-section">
-                <div class="page-width">
+                <div className="page-width">
                   {children}
                 </div>
               </div>

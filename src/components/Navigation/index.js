@@ -82,7 +82,7 @@ function Navigation({ siteTitle }) {
 			<header className="site-header__wrapper" role="banner">
 			<div className="site-header-sections page-width">
 				<nav className="site-header__section site-header__section--button" data-site-navigation="" role="navigation">
-					<button onClick={() => setOpen( open ? 0 : 1)} className="site-header__navigation btn btn--clear btn--square" aria-expanded={open ? "true" : "false"} data-navigation-button="" tabindex="0">
+					<button onClick={() => setOpen( open ? 0 : 1)} className="site-header__navigation btn btn--clear btn--square" aria-expanded={open ? "true" : "false"} data-navigation-button="" tabIndex="0">
 						<span className="burger-icon burger-icon--top"></span>
 						<span className="burger-icon burger-icon--mid"></span>
 						<span className="burger-icon burger-icon--bottom"></span>
@@ -158,9 +158,9 @@ function Navigation({ siteTitle }) {
 			</div>
 			</nav>
 					<div className="site-header__section site-header__section--title">
-						<div className="site-header__logo-wrapper h4" itemscope="" itemtype="http://schema.org/Organization">
-							<Link to="/" itemprop="url" className="site-header__logo">
-								<img className="site-header__logo-image" src="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551" srcset="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551 1x, //cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15@2x.png?v=1587100551 2x" alt={siteTitle} itemprop="logo"/>
+						<div className="site-header__logo-wrapper h4" itemScope="" itemType="http://schema.org/Organization">
+							<Link to="/" itemProp="url" className="site-header__logo">
+								<img className="site-header__logo-image" src="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551" srcSet="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551 1x, //cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15@2x.png?v=1587100551 2x" alt={siteTitle} itemProp="logo"/>
 							</Link>
 						</div>
 					</div>
