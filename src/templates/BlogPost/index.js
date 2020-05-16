@@ -1,6 +1,7 @@
 import React from 'react'
 import SEO from '~/components/seo'
 import { Img } from '~/utils/styles'
+import '~/pages/index.scss'
 
 const BlogPost = props => {
   const {

@@ -3,6 +3,7 @@ import React from 'react'
 import SEO from '~/components/seo'
 import BlogFeed from '~/components/BlogFeed'
 import { StaticQuery, graphql } from 'gatsby'
+import '~/pages/index.scss'
 
 const BLOG_QUERY =  graphql`
 query BlogQuery {

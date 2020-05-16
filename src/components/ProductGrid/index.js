@@ -66,7 +66,7 @@ const ProductGrid = () => {
   }).format(parseFloat(price ? price : 0))
 
   return (
-    <div className="card-list grid">
+    <div className="card-list grid" data-desktop-columns="2" data-mobile-columns="1" data-grid-style="collage">
       { allShopifyProduct.edges
         ? allShopifyProduct.edges.map(({ node: { id, handle, title, vendor, availableForSale, images: [firstImage], variants: [firstVariant] } }) => (
           <div className="card-list__column grid grid__item medium-up--one-half">

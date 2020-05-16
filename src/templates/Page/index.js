@@ -1,6 +1,7 @@
 import React from 'react'
 
 import SEO from '~/components/seo'
+import '~/pages/index.scss'
 
 const SinglePage = props => {
   const {
@@ -8,7 +9,7 @@ const SinglePage = props => {
   } = props
 
   return (
-    <>
+    <div class="page-width">
       <SEO title={node.title} keywords={[`gatsby`, `application`, `react`]} />
       <header class="section-header text-center">
         <h1 class="section-header__title h2">{node.title}</h1>
@@ -21,7 +22,7 @@ const SinglePage = props => {
               />
           </div>
       </div>
-    </>
+    </div>
 
   )
 }

@@ -10,6 +10,7 @@ import {
   ProductDescription
 } from './styles'
 import StoreContext from '~/context/StoreContext'
+import '~/pages/index.scss'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct

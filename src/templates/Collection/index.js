@@ -2,6 +2,7 @@ import React from 'react'
 
 import SEO from '~/components/seo'
 import ProductFeed from '~/components/ProductFeed'
+import '~/pages/index.scss'
 
 const Collection = props => {
   const {
