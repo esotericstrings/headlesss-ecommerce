@@ -2,6 +2,7 @@ const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
+  const shopifyUrl = 'https://headless-dev-store.myshopify.com'
   return graphql(`
     {
       allShopifyProduct {
@@ -66,6 +67,33 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             title
+          }
+        }
+      }
+      allShopifyArticle {
+        edges {
+          node {
+            title
+            content
+            contentHtml
+            publishedAt
+            excerpt
+            excerptHtml
+            url
+            image {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    sizes
+                    src
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                    tracedSVG
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -145,6 +173,21 @@ exports.createPages = ({ graphql, actions }) => {
       },
     })
     console.log('/blog/');
+    console.log(handle);
+  })
+
+  result.data.allShopifyArticle.edges.forEach(({ node }) => {
+    handle = node.url.replace(shopifyUrl, '').toLowerCase();
+    createPage({
+      path: `${handle}/`,
+      component: path.resolve(`./src/templates/BlogPost/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: handle,
+        node
+      },
+    })
     console.log(handle);
   })
   

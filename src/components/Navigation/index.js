@@ -62,15 +62,6 @@ function Navigation({ siteTitle }) {
 		return [total !== 0, total]
 	}
 
-	const renderSubMenu = (child) => {
-		return (
-			<li 
-			className={open ? "navigation__sublink navigation__entrance-animation--active" : "navigation__sublink"}>
-				<Link to={child.link}>{child.name}</Link>
-			</li>
-		)
-	  }
-
 	return(
     <StaticQuery
       query={MENU_QUERY}
@@ -111,7 +102,7 @@ function Navigation({ siteTitle }) {
 									{child.wordpress_children.map(subchild => {
 										return (
 											<li className="navigation__sublink">
-												<Link to={subchild.url}>{subchild.title}</Link>
+												<Link onClick={() => setOpen( 0 )} to={subchild.url}>{subchild.title}</Link>
 											</li>
 										)
 										})}
@@ -123,7 +114,7 @@ function Navigation({ siteTitle }) {
 							return (
 								<li 
 								className={open ? "navigation__link navigation__entrance-animation navigation__entrance-animation--active" : "navigation__link navigation__entrance-animation"}>
-									<Link to={child.url}>{child.title}</Link>
+									<Link onClick={() => setOpen( 0 )} to={child.url}>{child.title}</Link>
 								</li>
 							)
 						}
@@ -135,7 +126,7 @@ function Navigation({ siteTitle }) {
 							return (
 								<li 
 								className={open ? "navigation__link navigation__link--secondary navigation__entrance-animation  navigation__entrance-animation--active" : "navigation__link navigation__link--secondary navigation__entrance-animation"}>
-									<Link to={child.link}>{child.name}</Link>
+									<Link onClick={() => setOpen( 0 )} to={child.link}>{child.name}</Link>
 								</li>
 							)
 						})}
@@ -159,14 +150,14 @@ function Navigation({ siteTitle }) {
 			</nav>
 					<div className="site-header__section site-header__section--title">
 						<div className="site-header__logo-wrapper h4" itemScope="" itemType="http://schema.org/Organization">
-							<Link to="/" itemProp="url" className="site-header__logo">
+							<Link onClick={() => setOpen( 0 )} to="/" itemProp="url" className="site-header__logo">
 								<img className="site-header__logo-image" src="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551" srcSet="//cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15.png?v=1587100551 1x, //cdn.shopify.com/s/files/1/0282/3507/1540/files/Ratio-LOGO-dark_2x_x15_a6cf7df3-d1ea-495c-afcd-ec293f39f88d_x15@2x.png?v=1587100551 2x" alt={siteTitle} itemProp="logo"/>
 							</Link>
 						</div>
 					</div>
 
 					<div className="site-header__section site-header__section--button">
-				        <Link to="/cart" className="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
+				        <Link onClick={() => setOpen( 0 )} to="/cart" className="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
 				          <svg aria-hidden="true" focusable="false" role="presentation" className="icon icon-header-bag" viewBox="0 0 27.2 27"><path d="M19.6 9c-.2-5.1-2.7-9-6-9s-5.8 3.9-6 9h-4v18h20V9h-4zm-6-7c2.1 0 3.8 3.2 4 7h-8c.2-3.8 1.9-7 4-7zm-8 23V11h11v14h-11zm16 0h-3V11h3v14z"></path></svg>
 				          <span className="icon__fallback-text">View cart</span>
 				          <span className="site-header__cart-bubble">

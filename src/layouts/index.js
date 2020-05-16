@@ -28,11 +28,7 @@ const Layout = ({ children }) => {
             <div className="template-collection data-animations site-footer--parallax">
             <Navigation/>
             <main className="content-for-layout" id="MainContent" role="main" style={{marginBottom: "215.4px"}}>
-              <div id="shopify-section-collection-template" className="shopify-section">
-                <div className="page-width">
                   {children}
-                </div>
-              </div>
               </main>
               <Footer/>
           </div>

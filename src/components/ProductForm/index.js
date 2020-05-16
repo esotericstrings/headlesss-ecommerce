@@ -24,6 +24,7 @@ const ProductForm = ({ product }) => {
     client.product.helpers.variantForOptions(product, variant) || variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
+  const button_text = available ? "Add to Cart" : "Sold Out"
   const checkAvailability = useCallback(
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
@@ -98,61 +99,51 @@ const ProductForm = ({ product }) => {
 
   return (
     <>
-      <div className="product__content-header">
-            <h1 className="product__title h2 text-center" itemprop="name">{title}</h1>
-            <p className="product__price text-center" data-product-price="" aria-live="polite">
-              <span className="product__sale-price-label visually-hidden">Sale price</span>
-              <span className="product__regular-price-label visually-hidden">Price</span>
-              <span className="product__current-price" data-regular-price="">{price}</span>
-              <span className="product__compare-price-label visually-hidden">Regular price</span>
-              <span className="product__compare-price" data-compare-price=""></span>
-            </p>
-      </div>
-      {options.map(({ id, name, values }, index) => (
-        <React.Fragment key={id}>
-          <label htmlFor={name}>{name} </label>
-          <select
-            name={name}
-            key={id}
-            onChange={event => handleOptionChange(index, event)}
-          >
-            {values.map(value => (
-              <option
-                value={value}
-                key={`${name}-${value}`}
-                disabled={checkDisabled(name, value)}
-              >
-                {value}
-              </option>
-            ))}
-          </select>
-          <br />
-        </React.Fragment>
-      ))}
-      <label htmlFor="quantity">Quantity </label>
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        step="1"
-        onChange={handleQuantityChange}
-        value={quantity}
-      />
-      <br />
-      <button
-        className="btn btn--to-secondary btn--full product__add-to-cart-button shopify-payment-btn btn--secondary"
-        type="submit"
-        name="add" aria-label="Add to Cart"
-        disabled={!available || adding}
-        onClick={handleAddToCart}
-      >
-    <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text="">
-      Add to Cart
-    </span>
-    <span class="secondary-text" aria-hidden="true" data-cart-secondary-submit-text="">View cart</span>
-      </button>
-      {!available && <p>This Product is out of Stock!</p>}
+    <div className="product__form-wrapper">
+              <meta itemprop="price" content="60.0"/>
+              <meta itemprop="priceCurrency" content="USD"/>
+              <link itemprop="availability" href="http://schema.org/InStock"/>
+              <form method="post" action="/cart/add" id="product_form_4504487886900" accept-charset="UTF-8" className="product-form" enctype="multipart/form-data">
+                <input type="hidden" name="form_type" value="product"/>
+                <input type="hidden" name="utf8" value="✓"/>
+                {product.options.length > 1 ?
+                  <>
+                    {options.map(({ id, name, values }, index) => (
+                      <div className="product-form__item supports-js">
+                        <label className="single-option-selector__label" htmlFor={name}>{name}</label>
+                        <select
+                          className="single-option-selector"
+                          data-option-input
+                          style={{paddingLeft: 81.7813,
+                            opacity: 1}}
+                          id={name}
+                          name={name}
+                          key={id}
+                          onChange={event => handleOptionChange(index, event)}
+                        >
+                          {values.map(value => (
+                            <option
+                              value={value}
+                              key={`${name}-${value}`}
+                            >
+                              {value}
+                            </option>
+                          ))}
+                        </select>
+                        <br />
+                      </div>
+                    ))}
+                </>
+                :
+                ''}
+                <button className="btn btn--to-secondary btn--full product__add-to-cart-button shopify-payment-btn btn--secondary" type="submit" name="add" aria-label="Add to Cart"disabled={!available || adding} onClick={handleAddToCart}>
+                  <span className="primary-text" aria-hidden="false" data-cart-primary-submit-text="">
+                    {button_text}
+                  </span>
+                  <span className="secondary-text" aria-hidden="true" data-cart-secondary-submit-text="">View cart</span>
+                </button>
+              </form>
+            </div>
     </>
   )
 }
