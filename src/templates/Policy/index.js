@@ -2,6 +2,7 @@ import React from 'react'
 
 import SEO from '~/components/seo'
 import '~/pages/index.scss'
+import './index.scss'
 
 const Policy = props => {
   const {
@@ -9,7 +10,7 @@ const Policy = props => {
   } = props
 
   return (
-    <div class="page-width">
+    <div class="shopify-policy__container">
       <SEO title={node.title} keywords={[`gatsby`, `application`, `react`]} />
       <div className="main-content main-content--no-template" data-drawer-push="">
         <div className="main-content__wrapper">
