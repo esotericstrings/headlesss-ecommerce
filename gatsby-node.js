@@ -97,6 +97,27 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressPage {
+        edges {
+          node {
+            template
+            type
+            content
+            excerpt
+            childWordPressAcfSlider {
+              slides {
+                label
+                slide_content
+                slide_image {
+                  localFile {
+                    absolutePath
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `).then(result => {
 
@@ -113,6 +134,21 @@ exports.createPages = ({ graphql, actions }) => {
       })
     }),
   
+
+  result.data.allShopifyPage.edges.forEach(({ node }) => {
+    createPage({
+      path: `/pages/${node.handle}/`,
+      component: path.resolve(`./src/templates/Page/index.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: node.handle,
+        node
+      },
+    })
+    console.log('/pages/');
+    console.log(node.handle);
+  }),
 
   result.data.allShopifyPage.edges.forEach(({ node }) => {
     createPage({
